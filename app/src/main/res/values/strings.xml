@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">Movies</string>
+    <string name="movies_app_title">Movies</string>
+    <string name="movie_poster">Movie poster</string>
+    <string name="interstellar_title">Interstellar</string>
+    <string name="sci_fi">Sci-Fi</string>
+    <string name="interstellar_description">A team of explorers travel through a wormhole in space in an attempt to ensure humanity\'s survival.</string>
+    <string name="matthew_mcconaughey_name">Matthew McConaughey</string>
+    <string name="anne_hathaway_name">Anne Hathaway</string>
+    <string name="jessica_chastain_name">Jessica Chastain</string>
+    <string name="inception_title">Inception</string>
+    <string name="inception_description">A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.</string>
+    <string name="grand_budapest_hotel_title">Grand Budapest Hotel</string>
+    <string name="comedy">Comedy</string>
+    <string name="grand_budapest_hotel_description">A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel\'s glorious years under an exceptional concierge.</string>
 </resources>

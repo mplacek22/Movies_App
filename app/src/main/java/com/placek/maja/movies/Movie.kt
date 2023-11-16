@@ -1,39 +1,67 @@
 package com.placek.maja.movies
 
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.res.stringResource
+
 data class Movie (
     val title: String,
     val posterResId: Int,
     val year: Int,
     val genre: String,
     val description: String,
-    val actors: List<String>
+    val actors: List<String>,
+    val scenesResIds: List<Int>
 )
 
+data class Actor(
+    val name: String,
+    val photoResId: Int,
+)
+
+@Composable
 fun getMovies() : List<Movie>{
     return listOf (
         Movie(
-            title = "Interstellar",
+            title = stringResource(R.string.interstellar_title),
             posterResId = R.drawable.interstellar_poster,
             year = 2014,
-            genre = "Sci-Fi",
-            description = "A team of explorers travel through a wormhole in space in an attempt to ensure humanity's survival.",
-            actors = listOf("Matthew McConaughey", "Anne Hathaway", "Jessica Chastain")
+            genre = stringResource(R.string.sci_fi),
+            description = stringResource(R.string.interstellar_description),
+            actors = listOf(stringResource(R.string.matthew_mcconaughey_name),
+                stringResource(R.string.anne_hathaway_name),
+                stringResource(R.string.jessica_chastain_name)
+            ),
+            scenesResIds = listOf(
+                R.drawable.interstellar_scene_01,
+                R.drawable.interstellar_scene_02,
+                R.drawable.interstellar_scene_03
+            )
         ),
         Movie(
-            title = "Inception",
+            title = stringResource(R.string.inception_title),
             posterResId = R.drawable.inception_poster,
             year = 2010,
-            genre = "Sci-Fi",
-            description = "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
-            actors = listOf("Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page")
+            genre = stringResource(R.string.sci_fi),
+            description = stringResource(R.string.inception_description),
+            actors = listOf("Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"),
+            scenesResIds = listOf(
+                R.drawable.inception_scene_01,
+                R.drawable.inception_scene_02,
+                R.drawable.inception_scene_03
+            )
         ),
         Movie(
-            title = "Grand Budapest Hotel",
+            title = stringResource(R.string.grand_budapest_hotel_title),
             posterResId = R.drawable.grand_budapest_hotel_poster,
             year = 2014,
-            genre = "Comedy",
-            description = "A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.",
-            actors = listOf("Ralph Fiennes", "F. Murray Abraham", "Mathieu Amalric")
+            genre = stringResource(R.string.comedy),
+            description = stringResource(R.string.grand_budapest_hotel_description),
+            actors = listOf("Ralph Fiennes", "F. Murray Abraham", "Mathieu Amalric"),
+            scenesResIds = listOf(
+                R.drawable.grand_budapest_hotel_scene_01,
+                R.drawable.grand_budapest_hotel_scene_02,
+                R.drawable.grand_budapest_hotel_scene_03
+            )
         )
     )
 }
