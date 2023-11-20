@@ -13,4 +13,10 @@
     <string name="grand_budapest_hotel_title">Grand Budapest Hotel</string>
     <string name="comedy">Comedy</string>
     <string name="grand_budapest_hotel_description">A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel\'s glorious years under an exceptional concierge.</string>
+    <string name="ralph_fiennes">Ralph Fiennes</string>
+    <string name="f_murray_abraham">F. Murray Abraham</string>
+    <string name="mathieu_amalric">Mathieu Amalric</string>
+    <string name="leonardo_dicaprio">Leonardo DiCaprio</string>
+    <string name="joseph_gordon_levitt">Joseph Gordon-Levitt</string>
+    <string name="ellen_page">Ellen Page</string>
 </resources>

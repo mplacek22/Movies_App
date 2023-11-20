@@ -13,11 +13,6 @@ data class Movie (
     val scenesResIds: List<Int>
 )
 
-data class Actor(
-    val name: String,
-    val photoResId: Int,
-)
-
 @Composable
 fun getMovies() : List<Movie>{
     return listOf (
@@ -43,7 +38,10 @@ fun getMovies() : List<Movie>{
             year = 2010,
             genre = stringResource(R.string.sci_fi),
             description = stringResource(R.string.inception_description),
-            actors = listOf("Leonardo DiCaprio", "Joseph Gordon-Levitt", "Ellen Page"),
+            actors = listOf(stringResource(R.string.leonardo_dicaprio),
+                stringResource(R.string.joseph_gordon_levitt),
+                stringResource(R.string.ellen_page)
+            ),
             scenesResIds = listOf(
                 R.drawable.inception_scene_01,
                 R.drawable.inception_scene_02,
@@ -56,7 +54,10 @@ fun getMovies() : List<Movie>{
             year = 2014,
             genre = stringResource(R.string.comedy),
             description = stringResource(R.string.grand_budapest_hotel_description),
-            actors = listOf("Ralph Fiennes", "F. Murray Abraham", "Mathieu Amalric"),
+            actors = listOf(stringResource(R.string.ralph_fiennes),
+                stringResource(R.string.f_murray_abraham),
+                stringResource(R.string.mathieu_amalric)
+            ),
             scenesResIds = listOf(
                 R.drawable.grand_budapest_hotel_scene_01,
                 R.drawable.grand_budapest_hotel_scene_02,

@@ -38,8 +38,7 @@ import com.placek.maja.movies.getMovies
 fun MainScreen(navController: NavController){
     Column(modifier = Modifier.background(Color.White)) {
         TopAppBar(
-            title = { Text(text = stringResource(R.string.movies_app_title)) },
-            modifier = Modifier.background(Color.White)
+            title = { Text(text = stringResource(R.string.movies_app_title)) }
         )
         MainContent(navController = navController)
     }
