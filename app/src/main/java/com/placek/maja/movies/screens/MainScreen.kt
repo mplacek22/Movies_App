@@ -2,7 +2,6 @@ package com.placek.maja.movies.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -13,20 +12,18 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.placek.maja.bmi.screens.Screen
 import com.placek.maja.movies.Movie
 import com.placek.maja.movies.R
 import com.placek.maja.movies.getMovies
@@ -36,7 +33,7 @@ import com.placek.maja.movies.getMovies
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MainScreen(navController: NavController){
-    Column(modifier = Modifier.background(Color.White)) {
+    Column {
         TopAppBar(
             title = { Text(text = stringResource(R.string.movies_app_title)) }
         )
@@ -73,16 +70,16 @@ fun MovieRow(movie: Movie, onMovieClick: (Movie) -> Unit) {
                 .padding(16.dp)
         ) {
             Text(
-                text = movie.title,
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp,
+                text = movie.title.uppercase(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 4.dp)
+                    .padding(bottom = 8.dp),
+                textAlign = TextAlign.Center,
+                style = MaterialTheme.typography.headlineMedium
             )
             Image(
                 painter = painterResource(id = movie.posterResId),
-                contentDescription = "Movie Poster",
+                contentDescription = stringResource(R.string.movie_poster),
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(350.dp)
@@ -90,8 +87,8 @@ fun MovieRow(movie: Movie, onMovieClick: (Movie) -> Unit) {
                 contentScale = ContentScale.Fit
             )
             Text(
-                text = "Year: ${movie.year} \nGenre: ${movie.genre}",
-                fontSize = 14.sp,
+                text = stringResource(R.string.year_genre, movie.year, movie.genre),
+                style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(top = 4.dp, bottom = 8.dp)
             )
         }

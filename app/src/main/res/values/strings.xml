@@ -19,4 +19,6 @@
     <string name="leonardo_dicaprio">Leonardo DiCaprio</string>
     <string name="joseph_gordon_levitt">Joseph Gordon-Levitt</string>
     <string name="ellen_page">Ellen Page</string>
+    <string name="movie_poster_text">Movie Poster</string>
+    <string name="year_genre">Year: %1$s \nGenre: %2$s</string>
 </resources>

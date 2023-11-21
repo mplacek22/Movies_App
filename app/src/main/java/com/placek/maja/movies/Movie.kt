@@ -29,7 +29,13 @@ fun getMovies() : List<Movie>{
             scenesResIds = listOf(
                 R.drawable.interstellar_scene_01,
                 R.drawable.interstellar_scene_02,
-                R.drawable.interstellar_scene_03
+                R.drawable.interstellar_scene_03,
+                R.drawable.interstellar_scene_04,
+                R.drawable.interstellar_scene_05,
+                R.drawable.interstellar_scene_06,
+                R.drawable.interstellar_scene_07,
+                R.drawable.interstellar_scene_08,
+                R.drawable.interstellar_scene_09,
             )
         ),
         Movie(
@@ -45,7 +51,13 @@ fun getMovies() : List<Movie>{
             scenesResIds = listOf(
                 R.drawable.inception_scene_01,
                 R.drawable.inception_scene_02,
-                R.drawable.inception_scene_03
+                R.drawable.inception_scene_03,
+                R.drawable.inception_scene_04,
+                R.drawable.inception_scene_05,
+                R.drawable.inception_scene_06,
+                R.drawable.inception_scene_07,
+                R.drawable.inception_scene_08,
+                R.drawable.inception_scene_09
             )
         ),
         Movie(
@@ -61,7 +73,13 @@ fun getMovies() : List<Movie>{
             scenesResIds = listOf(
                 R.drawable.grand_budapest_hotel_scene_01,
                 R.drawable.grand_budapest_hotel_scene_02,
-                R.drawable.grand_budapest_hotel_scene_03
+                R.drawable.grand_budapest_hotel_scene_03,
+                R.drawable.grand_budapest_hotel_scene_04,
+                R.drawable.grand_budapest_hotel_scene_05,
+                R.drawable.grand_budapest_hotel_scene_06,
+                R.drawable.grand_budapest_hotel_scene_07,
+                R.drawable.grand_budapest_hotel_scene_08,
+                R.drawable.grand_budapest_hotel_scene_09
             )
         )
     )
