@@ -19,10 +19,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.placek.maja.movies.Movie
 import com.placek.maja.movies.R
@@ -46,7 +46,7 @@ fun MainContent(
     navController: NavController,
     movieList: List<Movie> = getMovies()
 )  {
-    Column(modifier = Modifier.padding(12.dp)) {
+    Column(modifier = Modifier.padding(dimensionResource(id = R.dimen.padding_large))) {
         LazyColumn {
             items(movieList) { movie ->
                 MovieRow(movie = movie, onMovieClick =  { movie ->
@@ -61,19 +61,19 @@ fun MainContent(
 fun MovieRow(movie: Movie, onMovieClick: (Movie) -> Unit) {
     Card(
         modifier = Modifier
-            .padding(8.dp)
+            .padding(dimensionResource(id = R.dimen.padding_medium))
             .fillMaxWidth()
     ) {
         Column(
             modifier = Modifier
                 .clickable { onMovieClick(movie) }
-                .padding(16.dp)
+                .padding(dimensionResource(id = R.dimen.padding_large))
         ) {
             Text(
                 text = movie.title.uppercase(),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = 8.dp),
+                    .padding(bottom = dimensionResource(id = R.dimen.padding_medium)),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.headlineMedium
             )
@@ -82,14 +82,14 @@ fun MovieRow(movie: Movie, onMovieClick: (Movie) -> Unit) {
                 contentDescription = stringResource(R.string.movie_poster),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(350.dp)
-                    .clip(shape = RoundedCornerShape(8.dp)),
+                    .height(dimensionResource(id = R.dimen.poster_height))
+                    .clip(shape = RoundedCornerShape(dimensionResource(id = R.dimen.padding_medium))),
                 contentScale = ContentScale.Fit
             )
             Text(
                 text = stringResource(R.string.year_genre, movie.year, movie.genre),
                 style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(top = 4.dp, bottom = 8.dp)
+                modifier = Modifier.padding(top = dimensionResource(id = R.dimen.padding_small), bottom = dimensionResource(id = R.dimen.padding_medium))
             )
         }
     }

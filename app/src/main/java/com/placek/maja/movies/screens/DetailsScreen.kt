@@ -40,7 +40,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -64,10 +63,10 @@ fun DetailsScreen(navController: NavController, movieTitle: String, viewModel: M
 
     Column(
         modifier = Modifier
-            .padding(dimensionResource(id = R.dimen.medium_space))
+            .padding(dimensionResource(id = R.dimen.padding_medium))
             .verticalScroll(rememberScrollState())
             .fillMaxSize(),
-        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.medium_space)),
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium)),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TopAppBar(
@@ -97,9 +96,9 @@ fun DetailsScreen(navController: NavController, movieTitle: String, viewModel: M
             }
             Column(
                 modifier = Modifier
-                    .padding(start = 16.dp)
+                    .padding(start = dimensionResource(id = R.dimen.padding_large))
                     .fillMaxSize(),
-                verticalArrangement = Arrangement.spacedBy(8.dp)
+                verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.space_medium))
             ) {
                 MovieDetails(movie)
             }
@@ -135,8 +134,8 @@ private fun MovieDetails(movie: Movie) {
 fun PhotoGrid(photoList: List<Int>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(3),
-        contentPadding = PaddingValues(4.dp),
-        modifier = Modifier.height(1000.dp)
+        contentPadding = PaddingValues(dimensionResource(id = R.dimen.padding_small)),
+        modifier = Modifier.height(500.dp)
     ) {
         items(photoList) { photoResId ->
             PhotoItem(photoResId = photoResId)
@@ -147,8 +146,8 @@ fun PhotoGrid(photoList: List<Int>) {
 @Composable
 fun ActorsList(actorsList: List<String>) {
     LazyColumn(
-        modifier = Modifier.height(1000.dp),
-        contentPadding = PaddingValues(16.dp),
+        modifier = Modifier.height(500.dp),
+        contentPadding = PaddingValues(dimensionResource(id = R.dimen.padding_large)),
     ) {
         items(actorsList) { actor ->
             ActorItem(actor = actor)
@@ -161,22 +160,23 @@ fun ActorItem(actor: String) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(8.dp)
-            .clip(shape = RoundedCornerShape(8.dp))
+            .padding(dimensionResource(id = R.dimen.padding_medium))
+            .clip(shape = RoundedCornerShape(dimensionResource(id = R.dimen.rounded_corner_size_medium)))
             .background(color = MaterialTheme.colorScheme.secondary),
         elevation = CardDefaults.cardElevation(
-            defaultElevation = 6.dp
+            defaultElevation = dimensionResource(id = R.dimen.elevation_medium)
         ),
     ) {
         Row(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(dimensionResource(id = R.dimen.padding_large)),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = actor,
-                style = TextStyle(fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                style = MaterialTheme.typography.bodyLarge,
+                fontWeight = FontWeight.Bold
             )
         }
     }
@@ -190,7 +190,7 @@ fun PhotoItem(photoResId: Int) {
             .padding(dimensionResource(id = R.dimen.padding_small))
             .fillMaxWidth()
             .aspectRatio(1f),
-        shape = RoundedCornerShape(4.dp)
+        shape = RoundedCornerShape(dimensionResource(id = R.dimen.rounded_corner_size_medium))
     ) {
         Image(
             painter = painterResource(id = photoResId),
@@ -204,7 +204,7 @@ fun PhotoItem(photoResId: Int) {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ModeSelector(selectedMode: DetailsViewMode, updateMode: (DetailsViewMode) -> Unit) {
-    Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.medium_space))) {
+    Row(horizontalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))) {
         DetailsViewMode.values().forEach {
             ElevatedFilterChip(
                 selected = selectedMode == it,
