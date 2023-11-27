@@ -1,5 +1,6 @@
 package com.placek.maja.movies
 
+import android.net.Uri
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 
@@ -10,7 +11,8 @@ data class Movie (
     val genre: String,
     val description: String,
     val actors: List<String>,
-    val scenesResIds: List<Int>
+    val scenesResIds: List<Int>,
+    val trailerUri: Uri
 )
 
 @Composable
@@ -36,7 +38,8 @@ fun getMovies() : List<Movie>{
                 R.drawable.interstellar_scene_07,
                 R.drawable.interstellar_scene_08,
                 R.drawable.interstellar_scene_09,
-            )
+            ),
+            trailerUri = Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.interstellar_trailer)
         ),
         Movie(
             title = stringResource(R.string.inception_title),
@@ -58,7 +61,8 @@ fun getMovies() : List<Movie>{
                 R.drawable.inception_scene_07,
                 R.drawable.inception_scene_08,
                 R.drawable.inception_scene_09
-            )
+            ),
+            trailerUri = Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.inception_trailer)
         ),
         Movie(
             title = stringResource(R.string.grand_budapest_hotel_title),
@@ -80,7 +84,8 @@ fun getMovies() : List<Movie>{
                 R.drawable.grand_budapest_hotel_scene_07,
                 R.drawable.grand_budapest_hotel_scene_08,
                 R.drawable.grand_budapest_hotel_scene_09
-            )
+            ),
+            trailerUri = Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.grand_budapest_hotel_trailer)
         )
     )
 }
