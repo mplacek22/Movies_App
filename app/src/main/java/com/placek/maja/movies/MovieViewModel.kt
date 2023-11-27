@@ -14,5 +14,7 @@ class MovieViewModel: ViewModel(){
 }
 
 enum class DetailsViewMode {
-    Actors, Scenes
+    Actors,
+    Scenes,
+    Trailers
 }

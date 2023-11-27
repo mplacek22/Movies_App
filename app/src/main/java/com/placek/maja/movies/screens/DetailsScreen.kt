@@ -21,7 +21,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
@@ -33,6 +33,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -43,11 +45,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.lifecycle.Lifecycle
+import androidx.media3.exoplayer.ExoPlayer
+import androidx.media3.ui.PlayerView
 import androidx.navigation.NavController
 import com.placek.maja.movies.DetailsViewMode
 import com.placek.maja.movies.Movie
 import com.placek.maja.movies.MovieViewModel
 import com.placek.maja.movies.R
+import com.placek.maja.movies.VideoViewModel
 import com.placek.maja.movies.getMovies
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -73,7 +80,7 @@ fun DetailsScreen(navController: NavController, movieTitle: String, viewModel: M
             title = { Text(text = movieTitle) },
             navigationIcon = {
                 IconButton(onClick = { navController.popBackStack() }) {
-                    Icon(imageVector = Icons.Default.ArrowBack, contentDescription = null)
+                    Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = null)
                 }
             }
 
@@ -114,6 +121,7 @@ fun DetailsScreen(navController: NavController, movieTitle: String, viewModel: M
             when (viewModel.selectedMode) {
                 DetailsViewMode.Actors -> ActorsList(actorsList = movie.actors)
                 DetailsViewMode.Scenes -> PhotoGrid(photoList = movie.scenesResIds)
+                DetailsViewMode.Trailers -> VideoPlayer(viewModel = VideoViewModel(movie, ExoPlayer.Builder(navController.context).build()))
             }
         }
     }
@@ -215,4 +223,33 @@ private fun ModeSelector(selectedMode: DetailsViewMode, updateMode: (DetailsView
             )
         }
     }
+}
+
+@Composable
+private fun VideoPlayer(viewModel: VideoViewModel){
+    val lifecycle by remember {
+        mutableStateOf(Lifecycle.Event.ON_CREATE)
+    }
+    AndroidView(
+        factory = { context ->
+            PlayerView(context).also {
+                it.player = viewModel.player
+            }
+        },
+        update = { playerView ->
+            when (lifecycle) {
+                Lifecycle.Event.ON_PAUSE -> {
+                    playerView.onPause()
+                    viewModel.player.pause()
+                }
+                Lifecycle.Event.ON_RESUME -> {
+                    playerView.onResume()
+                }
+                else -> Unit
+            }
+        },
+        modifier = Modifier
+            .fillMaxWidth()
+            .aspectRatio(16 / 9f)
+    )
 }

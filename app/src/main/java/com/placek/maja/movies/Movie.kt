@@ -12,7 +12,7 @@ data class Movie (
     val description: String,
     val actors: List<String>,
     val scenesResIds: List<Int>,
-    val trailerUri: Uri
+    val trailerUris: List<Uri>
 )
 
 @Composable
@@ -39,7 +39,11 @@ fun getMovies() : List<Movie>{
                 R.drawable.interstellar_scene_08,
                 R.drawable.interstellar_scene_09,
             ),
-            trailerUri = Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.interstellar_trailer)
+            trailerUris = listOf(
+                Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.interstellar_trailer),
+                Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.interstellar_trailer_02),
+                Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.interstellar_trailer_03)
+            )
         ),
         Movie(
             title = stringResource(R.string.inception_title),
@@ -62,7 +66,11 @@ fun getMovies() : List<Movie>{
                 R.drawable.inception_scene_08,
                 R.drawable.inception_scene_09
             ),
-            trailerUri = Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.inception_trailer)
+            trailerUris = listOf(
+                Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.inception_trailer_01),
+                Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.inception_trailer_02),
+                Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.inception_trailer_03)
+            )
         ),
         Movie(
             title = stringResource(R.string.grand_budapest_hotel_title),
@@ -85,7 +93,11 @@ fun getMovies() : List<Movie>{
                 R.drawable.grand_budapest_hotel_scene_08,
                 R.drawable.grand_budapest_hotel_scene_09
             ),
-            trailerUri = Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.grand_budapest_hotel_trailer)
+            trailerUris = listOf(
+                Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.grand_budapest_hotel_trailer_01),
+                Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.grand_budapest_hotel_trailer_02),
+                Uri.parse("android.resource://com.placek.maja.movies/" + R.raw.grand_budapest_hotel_trailer_03)
+            )
         )
     )
 }

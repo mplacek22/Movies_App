@@ -9,7 +9,6 @@ import androidx.navigation.navArgument
 import com.placek.maja.movies.screens.Screen
 import com.placek.maja.movies.screens.DetailsScreen
 import com.placek.maja.movies.screens.MainScreen
-import com.placek.maja.movies.screens.VideoPlayerScreen
 
 
 @Composable
@@ -30,11 +29,6 @@ fun Navigation(){
             )
         ) { backStackEntry ->
                 DetailsScreen(navController = navController, movieTitle = backStackEntry.arguments?.getString("movie") ?: "")
-        }
-        composable(
-            route = Screen.VideoPlayerScreen.route,
-        ){
-            VideoPlayerScreen(navController = navController)
         }
     }
 }
